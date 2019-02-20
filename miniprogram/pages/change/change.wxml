@@ -1,0 +1,8 @@
+<view>
+  <view class='img'>
+    <view class='forText'>
+      <image src='{{avatarUrl}}'></image>
+      <text>{{nickName}}</text>
+    </view>
+  </view>
+</view>

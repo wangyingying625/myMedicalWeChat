@@ -1,0 +1,21 @@
+<view class="container">
+  <view class='allo'>
+  <text>家庭：123456</text>
+  </view>
+  <view>
+  <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower"
+         style="height: 1320rpx;" 
+         class='new'>
+          <view class='list'>
+            <view wx:for="{{List}}" wx:key="{{index}}">
+              <view class='navigator' bindtap='nav'  data-id='{{item.id}}'>
+                <view data-id='{{item.id}}' class='name'>
+                  <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.email}}\n</text>
+                  <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+  </view>
+  </view>

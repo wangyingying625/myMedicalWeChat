@@ -1,0 +1,32 @@
+<view>
+  <view class='img'>
+  <view class='forText'>
+    <image src='{{avatarUrl}}'></image>
+    <text>{{nickName}}</text>
+    </view>
+  </view>
+  <view class='msg'>
+    <view class='box'>
+      <view class='left'>
+        <text class='email'>邮箱：1224374496@qq.com\n</text>
+         <text class='name'>用户名：mldwyy\n</text>
+        <text class='height'>身高：170cm</text>
+      </view>
+      <view class='right'>
+      <text class='gender'>性别：女\n</text>
+        <text class='age'>年龄：20\n</text>
+        <text class='weight'>体重：50kg</text>
+      </view>
+    </view>
+  </view>
+  <view class='butBox'>
+  <view class='upload'  bindtap="doUpload">
+  <image src='../../images/upload.png'></image>
+  <view class='forButText'><text>上传图片</text></view>
+  </view>
+  <navigator class='change' url='../change/change'>
+  <image src='../../images/change.png'></image>
+  <view class='forButText'><text>修改资料</text></view>
+  </navigator>
+  </view>
+</view>

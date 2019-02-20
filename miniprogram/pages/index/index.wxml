@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='allo'>
+    <text>您已经<text class='num'>100</text>天没有检查了,请及时检查</text>
+  </view>
+  <view class='charts'>
+    <view class='big'>
+      <navigator class='name' url='../details/details'>
+        <text>甲状腺激素</text>
+      </navigator>
+      <view class='bigChart'>
+        <ec-canvas canvas-id="mychart-line1" ec="{{ ec1 }}"></ec-canvas>
+      </view>
+    </view>
+
+
+    <view class='big'>
+      <navigator class='name' url='../details/details'>
+        <text>甲状腺激素</text>
+      </navigator>
+      <view class='bigChart'>
+        <ec-canvas canvas-id="mychart-line1" ec="{{ ec2 }}"></ec-canvas>
+      </view>
+    </view>
+  </view>
+</view>
