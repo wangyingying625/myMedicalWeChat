@@ -12,7 +12,6 @@ text{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 35rpx;
 }
 .forText{
   text-align: center;
@@ -23,5 +22,24 @@ text{
   border-radius: 50%;
   border: 8rpx #f98e64 solid;
   display: block;
-  margin-bottom: 10rpx;
+}
+.msg{
+  display: flex;
+  align-content: center;
+  height: 90rpx;
+  justify-content: center;
+  margin-top: 30rpx;
+}
+.inpT{
+  width: 65%;
+  border: 2rpx solid #676767;
+  border-radius: 10rpx;
+  padding: 10rpx;
+}
+.submit{
+  margin-top: 45rpx;
+  background-color: #fbede4;
+  color: #f98e64;
+  width: 350rpx;
+  margin-bottom: 35rpx;
 }

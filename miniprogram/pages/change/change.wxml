@@ -2,7 +2,33 @@
   <view class='img'>
     <view class='forText'>
       <image src='{{avatarUrl}}'></image>
-      <text>{{nickName}}</text>
     </view>
+  </view>
+  <view class='concent'>
+  <form>
+  <view class='msg'>
+<text>名字：</text>
+<input type='text' class='inpT'></input>
+  </view>
+   <view class='msg'>
+<text decode="{{true}}">性别：</text>
+<input type='text' class='inpT'></input>
+  </view>
+   <view class='msg'>
+<text decode="{{true}}">年龄：</text>
+<input type='text' class='inpT'></input>
+  </view>
+   <view class='msg'>
+<text>身高：</text>
+<input type='text' class='inpT'></input>
+  </view>
+  <view class='msg'>
+<text >体重：</text>
+<input type='text' class='inpT'></input>
+  </view>
+  <view>
+  <button class='submit' type='submit'>提交修改</button>
+  </view>
+  </form>
   </view>
 </view>
