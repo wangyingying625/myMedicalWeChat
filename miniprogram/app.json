@@ -1,15 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
     "pages/geRen/geRen",
     "pages/family/family",
-    "pages/upload/upload",
     "pages/change/change"
   ],
   "window": {

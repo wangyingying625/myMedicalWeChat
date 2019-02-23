@@ -11,8 +11,11 @@
 <input type='text' class='inpT'></input>
   </view>
    <view class='msg'>
-<text decode="{{true}}">性别：</text>
-<input type='text' class='inpT'></input>
+
+<radio-group class="radio-group" bindchange="radioChange">
+        <radio style='color:#f98e64' class='gender' value="men"/>男
+        <radio style='color:#f98e64;margin-left:50rpx;' class='gender' value="women"/>女
+</radio-group>
   </view>
    <view class='msg'>
 <text decode="{{true}}">年龄：</text>

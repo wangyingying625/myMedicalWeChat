@@ -42,4 +42,19 @@ text{
   color: #f98e64;
   width: 350rpx;
   margin-bottom: 35rpx;
+  border: 4rpx solid #f98e64;
+}
+radio{
+  color: #f98e64
+}
+.gender{
+  margin-right: 15rpx;
+  margin-bottom: 0;
+  color :#f98e64;
+  margin-left: 35rpx;
+}
+.radio-group{
+  margin: 0;
+  padding: 0;
+  margin-right: 50rpx;
 }
