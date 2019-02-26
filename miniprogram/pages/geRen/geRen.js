@@ -69,47 +69,16 @@ Page({
 
 
     else {
-      console.log("else")
-      wx.login({
-        success: function (res) {
-          if (res.code) {
-            wx.request({
-              //后s台接口地址
-              url: 'https://meng.taropowder.cn/wechat/api/login.php',
-              data: {
-                code: res.code,
-              },
-              method: 'GET',
-              header: {
-                'content-type': 'application/json'
-              },
-              //request的success
-              success: function (res) {
-                wx.setStorageSync('openId', res.data.openid);
-                app.globalData.openId = res.data.openid
-                console.log(app.globalData.openId)
-                wx.getUserInfo({
-                  success: function (res) {
-                    const userInfo = res.userInfo
-                    that.setData({
-                      nickName: userInfo.nickName,
-                      avatarUrl: userInfo.avatarUrl,
-                      userName: userInfo.nickName
-                    })
-                    app.globalData.userInfo = userInfo;
-                    that.setUserInfo()
-                  },
-                  fail: function () {
-                    that.setData({
-                      getUserInfoFail: true,
-                      nickName: '',
-                      avatarUrl: ''
-                    })
-                  },
-                })
-              }
-            })
-          }
+      wx.cloud.callFunction({
+        name: 'login',
+        data: {},
+        success: res => {
+          console.log(res)
+          console.log('[云函数] [login] user openid: ' + res.result.openid)
+          app.globalData.openid = res.result.openid
+        },
+        fail: err => {
+          console.error('[云函数] [login] 调用失败', err)
         }
       })
       //login的success结束
