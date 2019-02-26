@@ -8,33 +8,16 @@ Page({
   data: {
     nickName: '',
     avatarUrl: '',
-    getUserInfoFail: false,
-    userName: '匿名'
-  },
-  setUserInfo: function () {
-    var that = this
-    wx.request({
-      url: 'https://meng.taropowder.cn/wechat/api/get_username.php',
-      data: {
-        userName: app.globalData.userInfo.nickName,
-        userImg: app.globalData.userInfo.avatarUrl,
-        OpenId: app.globalData.openId
-      },
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-      }
-    })
+    userInfo: '',
+    userName: '匿名',
+    getUserInfoFail:false,
+    hasUserInfo:true
   },
   onLoad: function () {
-    wx.clearStorage()
     var that = this;
-    var openId = (wx.getStorageSync('openId'));
-    if (openId) {
+    var openid = (wx.getStorageSync('openid'));
+    if (openid) {
       console.log("if")
-      app.globalData.openId = wx.getStorageSync('openId')
       wx.getUserInfo({
         success: function (res) {
           const userInfo = res.userInfo
@@ -73,9 +56,12 @@ Page({
         name: 'login',
         data: {},
         success: res => {
-          console.log(res)
           console.log('[云函数] [login] user openid: ' + res.result.openid)
           app.globalData.openid = res.result.openid
+          wx.setStorage({
+            key: 'openid',
+            data: res.result.openid,
+          })
         },
         fail: err => {
           console.error('[云函数] [login] 调用失败', err)
@@ -83,6 +69,22 @@ Page({
       })
       //login的success结束
     }
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              this.setData({
+                avatarUrl: res.userInfo.avatarUrl,
+                userInfo: res.userInfo,
+                userName: res.userInfo.userName
+              })
+            }
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -118,8 +120,6 @@ Page({
   },
 
   getUserInfoo: function (e) {
-    app.globalData.openId = wx.getStorageSync('openId')
-    var openId = wx.getStorageSync('openId')
     var that = this;
     if (e.detail.userInfo) {
       app.globalData.userInfo = e.detail.userInfo
