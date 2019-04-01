@@ -8,50 +8,30 @@ Page({
   data: {
     nickName: '',
     avatarUrl: '',
+   msg:{
+      email:'1224374496@qq.com',
+      name:'mldwyy',
+      height:170,
+      gendel:'女',
+      bir:'1998-6-9',
+      weight:50
+    },
+    str:'',
+   // msg:'qwe',
     userInfo: '',
     userName: '匿名',
     getUserInfoFail:false,
     hasUserInfo:true
   },
   onLoad: function () {
+   // let str = JSON.stringify(this.data.msg)
     var that = this;
+    this.setData({
+      str: JSON.stringify(this.data.msg)
+    })
     var openid = (wx.getStorageSync('openid'));
-    if (openid) {
-      console.log("if")
-      wx.getUserInfo({
-        success: function (res) {
-          const userInfo = res.userInfo
-          that.setData({
-            nickName: userInfo.nickName,
-            avatarUrl: userInfo.avatarUrl,
-            userName: userInfo.nickName
-          })
-          app.globalData.userInfo = userInfo;
-          that.setUserInfo()
-        },
-        fail: function () {
-          that.setData({
-            getUserInfoFail: true,
-            nickName: '',
-            avatarUrl: ''
-          })
-        },
-      })
-    }
+    if (!openid) {
     //没有缓存openId的情况
-
-
-
-
-
-
-
-
-
-
-
-
-    else {
       wx.cloud.callFunction({
         name: 'login',
         data: {},
@@ -79,6 +59,14 @@ Page({
                 avatarUrl: res.userInfo.avatarUrl,
                 userInfo: res.userInfo,
                 userName: res.userInfo.userName
+              })
+              app.globalData.userInfo = res.userInfo
+            },
+            fail: res => {
+              that.setData({
+                getUserInfoFail: true,
+                nickName: '',
+                avatarUrl: ''
               })
             }
           })
@@ -112,11 +100,6 @@ Page({
 
     }, 2000)
     return;
-
-
-
-
-
   },
 
   getUserInfoo: function (e) {

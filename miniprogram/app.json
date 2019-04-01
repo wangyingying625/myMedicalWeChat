@@ -4,7 +4,8 @@
     "pages/geRen/geRen",
     "pages/family/family",
     "pages/change/change",
-    "pages/storageConsole/storageConsole"
+    "pages/storageConsole/storageConsole",
+    "pages/medical/medical"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -24,6 +25,12 @@
         "iconPath": "images/index.png",
         "selectedIconPath": "images/index1.png",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/medical/medical",
+        "iconPath": "images/medical.png",
+        "selectedIconPath": "images/medical1.png",
+        "text": "记录本"
       },
       {
         "pagePath": "pages/family/family",

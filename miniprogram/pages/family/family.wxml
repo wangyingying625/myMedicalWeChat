@@ -1,21 +1,30 @@
 <view class="container">
-  <view class='allo'>
-  <text>家庭：123456</text>
+  <view class='allo'  display="{{display1}}">
+    <text>您还没有所属家庭</text>
   </view>
-  <view>
-  <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower"
-         style="height: 1320rpx;" 
-         class='new'>
-          <view class='list'>
-            <view wx:for="{{List}}" wx:key="{{index}}">
-              <view class='navigator' bindtap='nav'  data-id='{{item.id}}'>
-                <view data-id='{{item.id}}' class='name'>
-                  <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.email}}\n</text>
-                  <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</text>
-                </view>
-              </view>
+   <view class='allo'  style='display:{{display}}'>
+    <text>家庭号1</text>
+  </view>
+  <view style='display:{{display}}'>
+    <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower" style="height: 1320rpx;" class='new'>
+      <view class='list'>
+        <view wx:for="{{List}}" wx:key="{{index}}">
+          <view class='navigator' bindtap='nav' data-id='{{item.id}}'>
+            <view data-id='{{item.id}}' class='name'>
+              <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.email}}\n</text>
+              <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</text>
             </view>
           </view>
-        </scroll-view>
+        </view>
+      </view>
+    </scroll-view>
   </view>
+  <view display="{{display1}}">
+    <view class='noFam'>
+      <button class='submit' bindtap='create'>创建家庭</button>
+      <input type='text' class='inpT' style='display:{{createDis}}' placeholder='请输入家庭名称'></input>
+      <button class='submit'  bindtap='add'>加入家庭</button>
+      <input type='text' class='inpT'  style='display:{{addDis}}' placeholder='请输入家庭号'></input>
+    </view>
   </view>
+</view>

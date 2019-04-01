@@ -24,19 +24,6 @@ page {
 }
 .charts{
   width: 100%;
+  height: 800rpx;
 }
-.big{
-  width: 100%;
-  height: 600rpx;
-  margin-bottom: -160rpx;
-  overflow: hidden;
-}
-.name{  
- margin-left: 50rpx;
-}
-.bigChart{
-  margin-top: -100rpx;
-   margin-left: -40rpx;
-  width: 100%;
-  height: 600rpx;
-}
+

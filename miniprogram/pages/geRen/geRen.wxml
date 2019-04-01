@@ -4,18 +4,19 @@
     <image src='{{avatarUrl}}'></image>
     <text>{{nickName}}</text>
     </view>
-  </view>
+  </view> 
   <view class='msg'>
     <view class='box'>
       <view class='left'>
-        <text class='email'>邮箱：1224374496@qq.com\n</text>
-         <text class='name'>用户名：mldwyy\n</text>
-        <text class='height'>身高：170cm</text>
+        <text class='email'>邮箱：{{msg.email}}\n</text>
+         <text class='name'>用户名：{{msg.name}}\n</text>
+          <text class='age'>生日：{{msg.bir}}\n</text>
+
       </view>
       <view class='right'>
-      <text class='gender'>性别：女\n</text>
-        <text class='age'>年龄：20\n</text>
-        <text class='weight'>体重：50kg</text>
+      <text class='gender'>性别：{{msg.gendel}}\n</text>
+        <text class='height'>身高：{{msg.height}}cm\n</text>
+        <text class='weight'>体重：{{msg.weight}}kg</text>
       </view>
     </view>
   </view>
@@ -24,7 +25,7 @@
   <image src='../../images/upload.png'></image>
   <view class='forButText'><text>上传图片</text></view>
   </view>
-  <navigator class='change' url='../change/change'>
+  <navigator class='change' url='../change/change?msg={{str}}'>
   <image src='../../images/change.png'></image>
   <view class='forButText'><text>修改资料</text></view>
   </navigator>

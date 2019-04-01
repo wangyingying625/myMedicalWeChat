@@ -47,4 +47,17 @@ page {
   text-align: center;
   display: none
 }
+.noFam{
+ padding-top: 50rpx;
+}
+.noFam .forText{
+text-align: center;
+width:350rpx;
+}
+.inpT{
+  width: 590rpx;
+  border: 2rpx solid #f98e64;
+  border-radius: 10rpx;
+  padding: 10rpx;
+}
 

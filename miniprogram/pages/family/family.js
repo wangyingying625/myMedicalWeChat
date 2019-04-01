@@ -5,16 +5,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-List:[{"id":'1',"email":'123',"name":'mmldwyy'}]
+//List:[{"id":'1',"email":'123',"name":'mmldwyy'}],
+List:'',
+display:'block',
+display1:'none',
+haveFam:true,
+createDis:'none',
+    addDis: 'none'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+if(this.data.List=='')
+{
+  this.setData({
+    display:'none',
+    display1: 'block'
+  })
+}
   },
-
+  create:function(){
+    if(this.data.createDis=='none')
+    this.setData({
+      createDis:'block'
+    })
+    else if (this.data.createDis == 'block')
+      this.setData({
+        createDis: 'none'
+      })
+  },
+  add:function(){
+    if (this.data.addDis == 'none')
+      this.setData({
+        addDis: 'block'
+      })
+    else if (this.data.addDis == 'block')
+      this.setData({
+        addDis: 'none'
+      })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
