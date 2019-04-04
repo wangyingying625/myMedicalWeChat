@@ -1,10 +1,10 @@
 <!--index.wxml-->
 <view>
   <view class='allo'>
-    <text>您已经<text class='num'>100</text>天没有检查了,请及时检查</text>
+    <text>距离上次体检<text class='num'>{{date}}</text>天</text>
   </view>
-  <view class="charts">
-    <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec1 }}"></ec-canvas>
- <ec-canvas id="mychart-dom-line1" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+  <view class="charts" wx:for="{{list}}"  wx:key="{{index}}" >
+  <ec-canvas  tuData="{{index}}"  ec="{{ec}}"></ec-canvas>
+ <!--<ec-canvas wx:for="{{data1}}"  wx:key="{{index}}" ec="ec0"></ec-canvas>-->
   </view>
 </view>

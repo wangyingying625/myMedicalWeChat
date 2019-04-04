@@ -1,26 +1,6 @@
-/**index.wxss**/
-page {
-  background: #f6f6f6;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
+
  text{
   color: #6890ec
-}
-.allo{
-  width: 100%;
-  height: 70rpx;
-  background-color: #fbede4;
-  padding: 20rpx;
-  padding-top: 30rpx;
-  text-align: center;
-}
-.allo text{
-  color: #6890ec
-}
-.allo .num{
-  font-size: 50rpx;
 }
 .charts{
   width: 100%;

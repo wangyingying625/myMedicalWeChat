@@ -1,42 +1,69 @@
 /**index.wxss**/
 page {
-  background: #f6f6f6;
+  background: rgb(231, 237, 238);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width: 100%;
 }
  text{
   color: #6890ec
 }
-.allo{
+
+.box{
+  justify-content: center;
+  align-items: center;
+  align-content: center
+}
+.card{
+  display: block;
+  width: 90%;
+  height: 200rpx;
+  border-radius: 10rpx;
+  border: 3rpx solid #6e6e6e;
+  margin-top: 28rpx;
+  padding: 15rpx;
+}
+.center{
   width: 100%;
-  height: 70rpx;
-  background-color: #fbede4;
-  padding: 20rpx;
-  padding-top: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card text{
+  color: #6e6e6e
+}
+.butList{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.butY{
+  margin-top: 45rpx;
+  background-color: #ffffff;
+  color: #73a30b;
+  width: 180rpx;
+  margin-bottom: 35rpx;
+  border: 4rpx solid #73a30b;
+}
+.butN{
+  margin-top: 45rpx;
+  background-color: #ffffff;
+  color: #fc7373;
+  width: 180rpx;
+  margin-bottom: 35rpx;
+  border: 4rpx solid #fc7373;
+}
+.forText{
   text-align: center;
 }
-.allo text{
-  color: #6890ec
+.img{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
-.allo .num{
-  font-size: 50rpx;
-}
-.charts{
-  width: 100%;
-}
-.big{
-  width: 100%;
-  height: 600rpx;
-  margin-bottom: -160rpx;
-  overflow: hidden;
-}
-.name{  
- margin-left: 50rpx;
-}
-.bigChart{
-  margin-top: -100rpx;
-   margin-left: -40rpx;
-  width: 100%;
-  height: 600rpx;
+.img image{
+  width: 450rpx;
+  height: 450rpx;
 }

@@ -1,10 +1,5 @@
 /* miniprogram/pages/geRen/geRen.wxss */
-page {
-  background: #fbede4;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
+
 text{
   color: #676767;
 }
@@ -22,7 +17,7 @@ text{
   height: 200rpx;
   width: 200rpx;
   border-radius: 50%;
-  border: 8rpx #f98e64 solid;
+  border: 8rpx #66c7ce solid;
   display: block;
   margin-bottom: 10rpx;
 }
@@ -71,7 +66,7 @@ text{
   width: 220rpx;
   height: 220rpx;
   padding: 30rpx;
-  border: 6rpx #f9cfbc solid;
+  border: 6rpx #b3dde0 solid;
 }
 .forButText{
   text-align: center

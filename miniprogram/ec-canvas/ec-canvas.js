@@ -12,6 +12,9 @@ Component({
 
     ec: {
       type: Object
+    },
+    tuData: {
+      type: Object
     }
   },
 
@@ -54,16 +57,20 @@ Component({
       var query = wx.createSelectorQuery().in(this);
       query.select('.ec-canvas').boundingClientRect(res => {
         if (typeof callback === 'function') {
-          this.chart = callback(canvas, res.width, res.height);
+         // console.log("if")
+          this.chart = callback(canvas, res.width, res.height,this.tuData);
         }
         else if (this.data.ec && typeof this.data.ec.onInit === 'function') {
-          this.chart = this.data.ec.onInit(canvas, res.width, res.height);
+         // console.log("else if")
+          this.chart = this.data.ec.onInit(canvas, res.width, res.height,this.data.tuData);
         }
         else {
+          //console.log("else")
           this.triggerEvent('init', {
             canvas: canvas,
             width: res.width,
-            height: res.height
+            height: res.height,
+            tuData:tuData
           });
         }
       }).exec();

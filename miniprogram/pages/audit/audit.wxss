@@ -1,0 +1,10 @@
+/* miniprogram/pages/audit/audit.wxss */
+@import '../change/change.wxss';
+.forText{
+width: 42%;
+margin-right: 30rpx;
+}
+.inpT{
+  width: 100%;
+  
+}

@@ -1,16 +1,19 @@
 {
   "pages": [
+   
     "pages/index/index",
+    "pages/storageConsole/storageConsole",
     "pages/geRen/geRen",
     "pages/family/family",
     "pages/change/change",
-    "pages/storageConsole/storageConsole",
-    "pages/medical/medical"
+    "pages/medical/medical",
+    "pages/audit/audit",
+    "pages/suc/suc"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f98e64",
+    "navigationBarBackgroundColor": "#66c7ce",
     "navigationBarTitleText": "病历本",
     "navigationBarTextStyle": "black"
   },
@@ -18,7 +21,7 @@
     "color": "#fff",
     "selectedColor": "#6890ec",
     "borderStyle": "black",
-    "backgroundColor": "#eea486",
+    "backgroundColor": "#66c7ce",
     "list": [
       {
         "pagePath": "pages/index/index",

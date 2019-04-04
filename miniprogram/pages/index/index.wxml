@@ -1,26 +1,36 @@
 <!--index.wxml-->
-<view class="container">
-  <view class='allo'>
-    <text>您已经<text class='num'>100</text>天没有检查了,请及时检查</text>
-  </view>
-  <view class='charts'>
-    <view class='big'>
-      <navigator class='name' url='../details/details'>
-        <text>甲状腺激素</text>
-      </navigator>
-      <view class='bigChart'>
-        <ec-canvas canvas-id="mychart-line1" ec="{{ ec1 }}"></ec-canvas>
+
+<view class='allo'>
+  <!--<text>您已经<text class='num'>100</text>天没有检查了,请及时检查</text>-->
+  <text>距离上次体检<text class='num'>{{date}}</text>天</text>
+</view>
+<view class='box'>
+  <view>
+    <swiper  class='center' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+      <block wx:for="{{msgList}}" wx:key="*this">
+        <swiper-item>
+          <view class='center'>
+            <view class="card">
+              <view class='forText'>
+                <text> {{item.msg}}</text>
+              </view>
+              <view class='butList'>
+                <button class='butY'>同意</button>
+                <button class='butN'>拒绝</button>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  <view class='intro'>
+      <view class="img">
+      <image src='../../images/indexLogo.png'></image>
+      </view>
+      <view>
+      <button class='submit' >体验病历本</button>
       </view>
     </view>
-
-
-    <view class='big'>
-      <navigator class='name' url='../details/details'>
-        <text>甲状腺激素</text>
-      </navigator>
-      <view class='bigChart'>
-        <ec-canvas canvas-id="mychart-line1" ec="{{ ec2 }}"></ec-canvas>
-      </view>
-    </view>
   </view>
+  
 </view>

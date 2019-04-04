@@ -50,11 +50,15 @@ function initChart(canvas, width, height) {
 
 Page({
   data: {
+    date: '',
+    indicatorDots: true,
+    msgList: [{ id:"1", msg: "mldwyy申请加入您的家庭" }, { id:"2", msg: "cldyy申请加入您的家庭" }],
     ec1: {
       onInit: initChart
     },
     ec2:{
       onInit: function (canvas, width, height) {
+        console.log("init")
         const chart = echarts.init(canvas, null, {
           width: width,
           height: height
@@ -98,6 +102,11 @@ Page({
         return chart;
       }
     }
+  },
+  onLoad: function () {
+    this.setData({
+      date: app.globalData.date
+    })
   },
   onReady() {
   }

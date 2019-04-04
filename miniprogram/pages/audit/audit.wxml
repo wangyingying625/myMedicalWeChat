@@ -1,0 +1,23 @@
+<view>
+  <view class='concent'>
+    <form bindsubmit="formSubmit">
+    <view class='msg' >
+        <view class='forText'>
+        <input type='text' class='inpT' value='类型'></input>
+        </view>
+        <view class='forText'>
+        <input type='text' class='inpT' value='{{type}}'></input>
+      </view>
+         </view>
+      <view class='msg' wx:for="{{list}}" wx:for-index="key" wx:for-item="value">
+        <view class='forText'>
+        <input type='text' class='inpT' value='{{key}}:'></input>
+        </view>
+        <view class='forText'>
+        <input type='text' class='inpT' value='{{value}}'></input>
+   </view>
+      </view>
+      <button class='submit' form-type='submit'>确定</button>
+    </form>
+  </view>
+</view>

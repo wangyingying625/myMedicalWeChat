@@ -1,6 +1,5 @@
 /* pages/storageConsole/storageConsole.wxss */
 
-
  text{
   color: #6890ec
 }

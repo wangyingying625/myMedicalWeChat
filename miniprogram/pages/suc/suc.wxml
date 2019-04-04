@@ -1,11 +1,13 @@
 <!--pages/storageConsole/storageConsole.wxml-->
 <view class="container">
 
-   <form  bindsubmit="formSubmit">
+    <view class="suc" bindtap="testCgi">
+      <text >上传成功</text>
+    </view>
     <view class="list-item">
       <image class="image1" src="{{imagePath}}" mode="aspectFit"></image>
     </view>
-    <input type='text' class='inpT' name='type' placeholder='请输入化验名'></input>
+    <input type='text' class='inpT' placeholder='请输入化验名'></input>
     <!-- <view class="list-item">
       <text class="request-text">文件 ID：{{fileID}}</text>
     </view>
@@ -13,8 +15,7 @@
       <text class="request-text">云文件路径：{{cloudPath}}</text>
     </view>
     -->
- <button class='submit' form-type='submit'>确定</button>
- </form>
+ <button class='submit' type='submit'>确定</button>
  <!-- <view class="guide">
     <!-- <image class="image1" src="{{imagePath}}" mode="aspectFit"></image>
     <text class="headline">云开发控制台中管理文件</text>

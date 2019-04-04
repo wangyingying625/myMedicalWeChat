@@ -9,14 +9,7 @@ Page({
     cloudPath: '',
     imagePath: '',
   },
-  formSubmit:function(e){
-    if (e.detail.value.type=='')return false;
-    else
-    wx.navigateTo({
-      url: '../audit/audit?type=' + e.detail.value.type
-    })
-    //console.log('form发生了submit事件，携带数据为：', e.detail.value)
-  },
+
   onLoad: function (options) {
 
     const {

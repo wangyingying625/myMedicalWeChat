@@ -1,9 +1,4 @@
-page {
-  background: #fbede4;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
+
 text{
   color: #676767;
 }
@@ -20,7 +15,7 @@ text{
   height: 200rpx;
   width: 200rpx;
   border-radius: 50%;
-  border: 8rpx #f98e64 solid;
+  border: 8rpx #66c7ce solid;
   display: block;
 }
 .msg{
@@ -36,21 +31,14 @@ text{
   border-radius: 10rpx;
   padding: 10rpx;
 }
-.submit{
-  margin-top: 45rpx;
-  background-color: #fbede4;
-  color: #f98e64;
-  width: 350rpx;
-  margin-bottom: 35rpx;
-  border: 4rpx solid #f98e64;
-}
+
 radio{
-  color: #f98e64
+  color: #c6e3e5
 }
 .gender{
   margin-right: 15rpx;
   margin-bottom: 0;
-  color :#f98e64;
+  color :#c6e3e5;
   margin-left: 35rpx;
 }
 .radio-group{

@@ -1,5 +1,8 @@
 {
   "usingComponents": {
     "ec-canvas": "../../ec-canvas/ec-canvas"
-  }
+  },
+  
+    "navigationBarTitleText": "病历记录"
+  
 }

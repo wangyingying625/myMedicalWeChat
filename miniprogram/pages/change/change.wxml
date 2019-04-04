@@ -41,7 +41,7 @@
 <input type='text' class='inpT' value='{{msg.weight}}'></input>
   </view>
   <view>
-  <button class='submit' type='submit'>提交修改</button>
+  <button class='submit' form-type='submit'>提交修改</button>
   </view>
   </form>
   </view>
