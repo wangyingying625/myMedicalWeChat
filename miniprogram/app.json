@@ -1,13 +1,12 @@
 {
   "pages": [
-      
     "pages/index/index",
     "pages/storageConsole/storageConsole",
     "pages/geRen/geRen",
     "pages/family/family",
     "pages/change/change",
     "pages/medical/medical",
-  "pages/audit/audit",
+    "pages/audit/audit",
     "pages/suc/suc",
     "pages/eat/eat",
     "pages/jieDu/jieDu",
@@ -15,7 +14,8 @@
     "pages/smart/smart",
     "pages/temp/temp",
     "pages/create/create",
-    "pages/bind/bind"
+    "pages/bind/bind",
+    "pages/others/others"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

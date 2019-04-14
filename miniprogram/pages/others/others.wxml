@@ -1,11 +1,5 @@
 <!--index.wxml-->
 <view>
-  <view class='allo'>
-    <text>距离上次体检<text class='num'>{{date}}</text>天</text>
-  </view>
-  
-
-
   <view class="section">
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{list1}}">
     <view class="picker">
@@ -13,9 +7,6 @@
     </view>
   </picker>
 </view>
-
-
-
    <view class="charts" wx:for="{{list}}" >
   <ec-canvas   ec="{{ec}}"></ec-canvas>
   </view> 

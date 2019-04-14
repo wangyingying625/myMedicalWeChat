@@ -27,7 +27,7 @@ createDis:'none',
       this.setData({
         isAdmin: false
       })
-    if (app.globalData.msg.family_id)
+    if (this.data.isAdmin || app.globalData.msg.status=='member')
     {
     this.setData({
       haveFam:true
@@ -50,6 +50,12 @@ createDis:'none',
       this.setData({
         haveFam: false
       })
+  },
+  nav:function(e){
+    console.log(e.target.dataset.id)
+    wx.navigateTo({
+      url: '../others/others?id=' + e.target.dataset.id,
+    })
   },
   dissolve:function(){
     var that=this
@@ -136,10 +142,49 @@ createDis:'none',
         openId: app.globalData.openid
       },
       success: function (res) {
+        if(res.data.status==true)
         wx.showToast({
           title: '您的申请已发送',
           duration: 2000
         })
+        else{
+          wx.showToast({
+            title: '没有这个家庭',
+            icon:'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+  quit:function(){
+    var that = this
+    wx.request({
+      url: 'https://test.taropowder.cn/api/family/quit',
+      data: {
+        openId: app.globalData.openid,
+      },
+      success: function (res) {
+        if (res.data.status == true) {
+          wx.request({
+            url: 'https://test.taropowder.cn/api/info',
+            data: {
+              openId: app.globalData.openid
+            },
+            success: function (res) {
+              app.globalData.msg = res.data
+              wx.setStorage({
+                key: 'msg',
+                data: res.data,
+              })
+              that.setData({
+                msg: res.data,
+                haveFam: false
+              })
+              that.onLoad()
+            }
+          })
+        }
       }
     })
   },
@@ -166,7 +211,7 @@ createDis:'none',
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+this.onLoad()
   },
 
   /**

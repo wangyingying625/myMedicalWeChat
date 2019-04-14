@@ -5,7 +5,7 @@
   <view class='allo' wx:if="{{haveFam}}">
     <text>{{List.family.name}}</text>
     <button bindtap='dissolve' wx:if="{{isAdmin}}">解散家庭</button> 
-    <button  wx:if="{{!isAdmin}}">退出家庭</button>
+    <button bindtap='quit'   wx:if="{{!isAdmin}}">退出家庭</button>
   </view>
   <view  wx:if="{{haveFam}}">
     <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower" style="height: 1320rpx;" class='new'>
@@ -31,11 +31,11 @@
         </view>
         </view>
     </form>
-    <form>
+    <form bindsubmit="addF">
       <button class='submit' bindtap='add'>加入家庭</button>
       <view style='display:{{addDis}}'>
-        <input type='text' name='id' class='inpT' placeholder='请输入家庭号'></input>
-        <button class='submit' bindtap='addCubmit'>确定</button>
+        <input type='text' name='id' class='inpT' placeholder='请输入家庭名称'></input>
+         <button class='submit' form-type='submit'>确定</button>
       </view>
     </form>
 

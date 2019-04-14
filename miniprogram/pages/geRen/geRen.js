@@ -323,7 +323,22 @@ Page({
         }
       })
     }
-
+    wx.request({
+      url: 'https://test.taropowder.cn/api/info',
+      data: {
+        openId: app.globalData.openid
+      },
+      success: function (res) {
+        app.globalData.msg = res.data
+        wx.setStorage({
+          key: 'msg',
+          data: res.data,
+        })
+        that.setData({
+          msg: res.data
+        })
+      }
+    })
   },
 
   /**
