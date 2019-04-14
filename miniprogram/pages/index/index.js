@@ -1,113 +1,57 @@
 import * as echarts from '../../ec-canvas/echarts';
 
 const app = getApp();
-
-function initChart(canvas, width, height) {
-  const chart = echarts.init(canvas, null, {
-    width: width,
-    height: height
-  });
-  canvas.setChart(chart);
-
-  var option = {
-  
-    color: ["#6890ec"],
-  
-    grid: {
-      containLabel: true
-    },
-    tooltip: {
-      show: true,
-      trigger: 'axis'
-    },
-    xAxis: {
-      type: 'category',
-      boundaryGap: false,
-      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-      // show: false
-    },
-    yAxis: {
-      x: 'center',
-      type: 'value',
-      splitLine: {
-        lineStyle: {
-          type: 'dashed'
-        }
-      }
-      // show: false
-    },
-    series: [{
-      name: '甲状腺激素',
-      type: 'line',
-      smooth: true,
-      data: [52,59,66]
-    }]
-  };
-
-  chart.setOption(option);
-  return chart;
-}
-
 Page({
-  data: {
-    date: '',
-    indicatorDots: true,
-    msgList: [{ id:"1", msg: "mldwyy申请加入您的家庭" }, { id:"2", msg: "cldyy申请加入您的家庭" }],
-    ec1: {
-      onInit: initChart
-    },
-    ec2:{
-      onInit: function (canvas, width, height) {
-        console.log("init")
-        const chart = echarts.init(canvas, null, {
-          width: width,
-          height: height
-        });
-        canvas.setChart(chart);
-        var list = [1, 2, 3];
-        var option = {
-          color: ["#6890ec"],
-          grid: {
-            containLabel: true
+      data: {
+        date: '',
+        isAdmin: '',
+        display:'',
+        pushMsg: [{
+            id: 0,
+            name: "甲状腺激素",
+            description: "甲状腺激素：主要作用是促进动物的生长发育、新陈代谢，以及提高动物的兴奋性。要保证甲状腺激素含量正常需要充足的睡眠与放松的心情，避免太大的精神压力。否则会出现便次增多、体重减少等症状"
           },
-          tooltip: {
-            show: true,
-            trigger: 'axis'
-          },
-          xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-            // show: false
-          },
-          yAxis: {
-            x: 'center',
-            type: 'value',
-            splitLine: {
-              lineStyle: {
-                type: 'dashed'
-              }
-            }
-            // show: false
-          },
-          series: [{
-            name: 'name',
-            type: 'line',
-            smooth: true,
-            data: list
-          }]
-        };
+          {
+            id: 1,
+            name: "血红蛋白",
+            description: "血红蛋白：主要功能是运输氧气。"
+          }
+        ],
 
-        chart.setOption(option);
-        return chart;
-      }
-    }
-  },
-  onLoad: function () {
-    this.setData({
-      date: app.globalData.date
-    })
-  },
-  onReady() {
-  }
-});
+        indicatorDots: true,
+        msgList: [{
+          id: "1",
+          msg: "mldwyy申请加入您的家庭"
+        }, {
+          id: "2",
+          msg: "cldyy申请加入您的家庭"
+        }],
+      },
+        onLoad: function() {
+          console.log(app.globalData)
+          if ((wx.getStorageSync('openid')))
+          {
+            app.globalData.ifBind=true
+          }
+
+          else
+
+          {
+            wx.switchTab({
+              url: '../geRen/geRen',
+            })
+          }
+          if(app.globalData.msg.status=='admin')
+          this.setData({
+            isAdmin:true
+          })
+          else
+            this.setData({
+              isAdmin: false
+            })
+          this.setData({
+            date: app.globalData.date,
+          })
+        },
+        onReady() {}
+      });

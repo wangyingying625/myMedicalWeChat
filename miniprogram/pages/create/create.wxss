@@ -1,0 +1,14 @@
+
+.msg{
+    margin-top: 30rpx;
+  display: flex;
+  align-content: center;
+  height: 90rpx;
+  justify-content: center;
+}
+.gender{
+  margin-right: 15rpx;
+  margin-bottom: 0;
+  color :#c6e3e5;
+  margin-left: 35rpx;
+}

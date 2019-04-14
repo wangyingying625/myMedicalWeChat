@@ -1,30 +1,43 @@
 <view class="container">
-  <view class='allo'  display="{{display1}}">
+  <view class='allo' wx:if="{{!haveFam}}">
     <text>您还没有所属家庭</text>
   </view>
-   <view class='allo'  style='display:{{display}}'>
-    <text>家庭号1</text>
+  <view class='allo' wx:if="{{haveFam}}">
+    <text>{{List.family.name}}</text>
+    <button bindtap='dissolve' wx:if="{{isAdmin}}">解散家庭</button> 
+    <button  wx:if="{{!isAdmin}}">退出家庭</button>
   </view>
-  <view style='display:{{display}}'>
+  <view  wx:if="{{haveFam}}">
     <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower" style="height: 1320rpx;" class='new'>
       <view class='list'>
-        <view wx:for="{{List}}" wx:key="{{index}}">
+        <view wx:for="{{List.members}}" wx:key="{{index}}">
           <view class='navigator' bindtap='nav' data-id='{{item.id}}'>
             <view data-id='{{item.id}}' class='name'>
-              <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.email}}\n</text>
-              <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</text>
+              <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}\n</text>
+              <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.sex}}</text>
             </view>
           </view>
         </view>
       </view>
     </scroll-view>
   </view>
-  <view display="{{display1}}">
-    <view class='noFam'>
-      <button class='submit' bindtap='create'>创建家庭</button>
-      <input type='text' class='inpT' style='display:{{createDis}}' placeholder='请输入家庭名称'></input>
-      <button class='submit'  bindtap='add'>加入家庭</button>
-      <input type='text' class='inpT'  style='display:{{addDis}}' placeholder='请输入家庭号'></input>
-    </view>
+  <view  wx:if="{{!haveFam}}">
+    <form bindsubmit="createF">
+      <view class='noFam'>
+        <button class='submit' bindtap='create'>创建家庭</button>
+        <view style='display:{{createDis}}'>
+          <input type='text' name="name" class='inpT' placeholder='请输入家庭名称'></input>
+          <button class='submit' form-type='submit'>确定</button>
+        </view>
+        </view>
+    </form>
+    <form>
+      <button class='submit' bindtap='add'>加入家庭</button>
+      <view style='display:{{addDis}}'>
+        <input type='text' name='id' class='inpT' placeholder='请输入家庭号'></input>
+        <button class='submit' bindtap='addCubmit'>确定</button>
+      </view>
+    </form>
+
   </view>
 </view>

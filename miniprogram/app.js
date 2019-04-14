@@ -11,8 +11,10 @@ App({
     }
     this.globalData = {
       userInfo: '',
-      openid: '',
-      date: 10
+      openid: wx.getStorageSync('openid'),
+      date: 1,
+      msg: wx.getStorageSync('msg'),
+      ifBind:''
     }
   }
 })

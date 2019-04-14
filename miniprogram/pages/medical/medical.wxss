@@ -4,6 +4,6 @@
 }
 .charts{
   width: 100%;
-  height: 800rpx;
-}
+  height: 900rpx;
+} 
 

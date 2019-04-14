@@ -6,7 +6,8 @@
       <image class="image1" src="{{imagePath}}" mode="aspectFit"></image>
     </view>
     <input type='text' class='inpT' name='type' placeholder='请输入化验名'></input>
-    <!-- <view class="list-item">
+
+   <!-- <view class="list-item">
       <text class="request-text">文件 ID：{{fileID}}</text>
     </view>
     <view class="list-item">

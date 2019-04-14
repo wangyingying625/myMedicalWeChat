@@ -1,0 +1,31 @@
+<!--pages/storageConsole/storageConsole.wxml-->
+<view class="container">
+  <button class='submit' bindtap='doUpload'>选择图片</button>
+  <form  bindsubmit="formSubmit">
+  <view  wx:if="{{fileID}}"  class="list-item">
+      <image class="image1" src="{{imagePath}}" mode="aspectFit"></image>
+    </view>
+    <view class='msg'>
+      <text>化验名称：</text>
+      <input required type='text' class='inpT' name='type'></input>
+    </view>
+    <view class='msg'>
+      <text decode="{{true}}">化验时间：</text>
+     <picker class='inpT'
+    mode="date"
+    name="date"
+    value="{{dateChose}}"
+    start="2015-09-01"
+    end="2017-09-01"
+    bindchange="bindDateChange"
+  >
+    <view class="picker">
+     {{dateChose}}
+    </view>
+  </picker>
+    </view>
+
+
+    <button class='submit' form-type='submit'>确定</button>
+  </form>
+</view>

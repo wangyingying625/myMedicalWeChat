@@ -5,44 +5,38 @@
     </view>
   </view>
   <view class='concent'>
-  <form>
-  <view class='msg'>
-<text>名字：</text>
-<input type='text' class='inpT' value='{{msg.name}}'></input>
-  </view>
-   <view class='msg'>
+    <form bindsubmit="formSubmit">
+      <view class='msg'>
+        <text>名字：</text>
+        <input type='text' class='inpT' name='name' value='{{msg.name}}'></input>
+      </view>
+      <view class='msg'>
+        <radio-group name='sex' class="radio-group" bindchange="radioChange">
+          <label class="radio" wx:for="{{items}}">
+            <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class='msg'>
+        <text decode="{{true}}">生日：</text>
+        <picker class='inpT' mode="date" name='birthday' value="{{msg.birthday}}" start="1900-01-01" end="2020-09-01" bindchange="bindDateChange">
+          <view class="picker">
+            {{msg.birthday}}
+          </view>
+        </picker>
 
-<radio-group class="radio-group" bindchange="radioChange">
-        <radio style='color:#f98e64' checked='{{isMale}}' class='gender' value="men"/>男
-        <radio style='color:#f98e64;margin-left:50rpx;' class='gender' value="women"  checked='!{{isMale}}' />女
-</radio-group>
-  </view>
-   <view class='msg'>
-<text decode="{{true}}">生日：</text>
- <picker class='inpT'
-    mode="date"
-    value="{{msg.bir}}"
-     start="1900-01-01"
-    end="2020-09-01"
-    bindchange="bindDateChange"
-  >
-  <view class="picker">
-       {{msg.bir}}
-    </view>
-  </picker>
-
-  </view>
-   <view class='msg'>
-<text>身高：</text>
-<input type='text' class='inpT' value='{{msg.height}}'></input>
-  </view>
-  <view class='msg'>
-<text >体重：</text>
-<input type='text' class='inpT' value='{{msg.weight}}'></input>
-  </view>
-  <view>
-  <button class='submit' form-type='submit'>提交修改</button>
-  </view>
-  </form>
+      </view>
+      <view class='msg'>
+        <text>身高：</text>
+        <input type='text' class='inpT' name='height' value='{{msg.height}}'></input>
+      </view>
+      <view class='msg'>
+        <text>体重：</text>
+        <input type='text' class='inpT' name='weight' value='{{msg.weight}}'></input>
+      </view>
+      <view>
+        <button class='submit' form-type='submit'>提交修改</button>
+      </view>
+    </form>
   </view>
 </view>

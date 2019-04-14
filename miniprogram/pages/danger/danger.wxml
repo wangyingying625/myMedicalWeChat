@@ -1,0 +1,11 @@
+<view class="con">
+<view class="title">
+    <text style='color:#fc7373'>出现以下症状时请及时去医院检查</text>
+  </view>
+  <view class='content'>
+  <view class='tips' wx:for="{{msg.information}}" wx:key="{{index}}">
+  <view class='conName'><text>{{index+1}}.{{item.name}}:</text></view>
+    <view class='conMsg'><text>{{item.content}}</text></view>
+  </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+.msg{
+  margin-top:30 rpx;
+  display: flex;
+  align-content: center;
+  height: 90rpx;
+  justify-content: center;
+}

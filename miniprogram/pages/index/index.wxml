@@ -5,8 +5,8 @@
   <text>距离上次体检<text class='num'>{{date}}</text>天</text>
 </view>
 <view class='box'>
-  <view>
-    <swiper  class='center' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+  <view wx:if="{{isAdmin}}">
+    <swiper class='center' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
       <block wx:for="{{msgList}}" wx:key="*this">
         <swiper-item>
           <view class='center'>
@@ -23,14 +23,34 @@
         </swiper-item>
       </block>
     </swiper>
-  <view class='intro'>
-      <view class="img">
-      <image src='../../images/indexLogo.png'></image>
-      </view>
-      <view>
-      <button class='submit' >体验病历本</button>
-      </view>
-    </view>
   </view>
-  
+  <view>
+    <navigator class='center' url='../eat/eat'>
+      <view class='tips'>
+        <view class='text'>
+          <text style="font-size:35rpx">无论多忙都要照顾好自己\n</text>
+          <text style="font-size:30rpx">点击查看健康的饮食习惯\n</text>
+        </view>
+        <image src='../../images/eat.png' mode='aspectFit' class='img'></image>
+      </view>
+    </navigator>
+    <navigator class='center' url='../danger/danger'>
+      <view class='tips'>
+        <view class='text'>
+          <text style="font-size:35rpx" decode="{{true}}">身体是革命的本钱 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n</text>
+          <text style="font-size:30rpx" decode="{{true}}">身体的警告您接收到了吗 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n</text>
+        </view>
+        <image src='../../images/tips.png' mode='aspectFit' class='img'></image>
+      </view>
+   </navigator>
+    <navigator class='center' url='../jieDu/jieDu'>
+      <view class='tips'>
+        <view class='text'>
+          <text style="font-size:35rpx" decode="{{true}}">化验结果想告诉您什么 &nbsp;\n</text>
+          <text style="font-size:30rpx" decode="{{true}}">让我来帮您解读您的化验单吧\n</text>
+        </view>
+        <image src='../../images/jieDu.png' mode='aspectFit' class='img' style='height:180rpx'></image>
+      </view>
+    </navigator>
+  </view>
 </view>

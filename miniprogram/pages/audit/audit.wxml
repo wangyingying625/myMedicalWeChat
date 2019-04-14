@@ -1,23 +1,33 @@
-<view>
-  <view class='concent'>
-    <form bindsubmit="formSubmit">
-    <view class='msg' >
-        <view class='forText'>
-        <input type='text' class='inpT' value='类型'></input>
-        </view>
-        <view class='forText'>
-        <input type='text' class='inpT' value='{{type}}'></input>
+<view class='help'>
+  <form bindsubmit="formSubmit">
+    <view class='help_item' wx:for="{{list}}" wx:for-index="key" wx:for-item="value">
+      <view class='title' data-index='{{value.id}}' catchtap='panel'>
+        <view class='title_1'>{{value.name_ch}}</view>
+        <view class='title_2'></view>
       </view>
-         </view>
-      <view class='msg' wx:for="{{list}}" wx:for-index="key" wx:for-item="value">
-        <view class='forText'>
-        <input type='text' class='inpT' value='{{key}}:'></input>
+      <view class='detail'  style="display:{{showIndex == value.id?'block':'none'}}">
+        <view class='msg'>
+          <text>中文名：</text>
+          <input type='text' class='inpT' name='[{{value.id}}][name_ch]' value='{{value.name_ch}}'></input>
         </view>
-        <view class='forText'>
-        <input type='text' class='inpT' value='{{value}}'></input>
-   </view>
+        <view class='msg'>
+          <text>英文名：</text>
+          <input type='text' class='inpT' name='[{{value.id}}][name_en]' value='{{value.name_en}}'></input>
+        </view>
+        <view class='msg'>
+          <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;值：</text>
+          <input type='text' class='inpT' name='[{{value.id}}][value]' value='{{value.value}}'></input>
+        </view>
+        <view class='msg'>
+          <text decode="{{true}}">&nbsp;&nbsp;&nbsp;上限：</text>
+          <input type='text' class='inpT' name='[{{value.id}}][upper_limit]' value='{{value.upper_limit}}'></input>
+        </view>
+        <view class='msg'>
+          <text decode="{{true}}">&nbsp;&nbsp;&nbsp;下限：</text>
+          <input type='text' class='inpT' name='[{{value.id}}][lower_limit]' value='{{value.lower_limit}}'></input>
+        </view>
       </view>
-      <button class='submit' form-type='submit'>确定</button>
-    </form>
-  </view>
+    </view>
+    <button class='submit' form-type='submit'>确定</button>
+  </form>
 </view>

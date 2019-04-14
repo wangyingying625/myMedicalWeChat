@@ -1,0 +1,12 @@
+<view class="con">
+  <view class="title">
+    <text>{{msg.title}}</text>
+  </view>
+  <view class='content'>
+  <view class='tips' wx:for="{{msg.information}}" wx:key="{{index}}">
+  <view class='conName'><text>{{index+1}}.{{item.name}}:</text></view>
+    <view class='conMsg'><text>{{item.content}}</text></view>
+    <image mode='aspectFit' src='{{item.img}}'></image>
+  </view>
+  </view>
+</view>

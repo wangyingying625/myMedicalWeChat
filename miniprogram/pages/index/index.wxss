@@ -1,13 +1,6 @@
-/**index.wxss**/
-page {
-  background: rgb(231, 237, 238);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-}
+
  text{
-  color: #6890ec
+  color: #6e6e6e;
 }
 
 .box{
@@ -17,12 +10,12 @@ page {
 }
 .card{
   display: block;
-  width: 90%;
+  background-color: #d4e6e9;
+  width: 100%;
   height: 200rpx;
-  border-radius: 10rpx;
-  border: 3rpx solid #6e6e6e;
-  margin-top: 28rpx;
   padding: 15rpx;
+  padding-top: 40rpx;
+  padding-bottom: 25rpx;
 }
 .center{
   width: 100%;
@@ -57,13 +50,21 @@ page {
 .forText{
   text-align: center;
 }
-.img{
+.tips{
+  height: 240rpx;
+  width: 93%;
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
+  background-color: #d4e6e9;
+  border-radius: 15rpx;
+  margin-top: 20rpx;
 }
-.img image{
-  width: 450rpx;
-  height: 450rpx;
+.text{
+  margin-right: 30rpx;
+}
+.img{
+  height: 160rpx;
+  width: 200rpx;
 }

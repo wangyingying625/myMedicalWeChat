@@ -1,0 +1,29 @@
+/* pages/storageConsole/storageConsole.wxss */
+
+
+ text{
+  color: #6890ec
+}
+.suc{
+  margin-top: 20rpx;
+}
+
+.inpT{
+   width: 590rpx;
+  border: 2rpx solid #66c7ce;
+  border-radius: 10rpx;
+  padding: 10rpx;
+}
+.msg{
+  display: flex;
+  align-content: center;
+  height: 90rpx;
+  justify-content: center;
+  margin-top: 30rpx;
+}
+.inpT{
+  width: 65%;
+  border: 2rpx solid #676767;
+  border-radius: 10rpx;
+  padding: 10rpx;
+}

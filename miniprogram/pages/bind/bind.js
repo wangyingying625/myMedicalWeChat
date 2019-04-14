@@ -1,37 +1,49 @@
-// miniprogram/pages/audit/audit.js
-
+// miniprogram/pages/bind/bind.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showIndex: 0,
-    list: '',
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   var content=JSON.parse(options.content)
-this.setData({
-  list: content,
-  showIndex: content[0].id,
-})
-    console.log(this.data.list)
-   
+
   },
-  panel: function (e) {
-    if (e.currentTarget.dataset.index != this.data.showIndex) {
-      this.setData({
-        showIndex: e.currentTarget.dataset.index
-      })
-    } else {
-      this.setData({
-        showIndex: 0
-      })
-    }
+  formSubmit:function(e){
+    wx.request({
+      url: 'https://test.taropowder.cn/api/binding',
+      data: {
+        name:e.detail.value.name,
+        password: e.detail.value.password,
+        openId: app.globalData.openid
+      },
+      success:function(res){
+        if(res.data.status==true)
+        {
+          app.globalData.msg = res.data.user
+          app.globalData.ifBind = true
+          wx.switchTab({
+            url: '../geRen/geRen',
+          })
+         
+        }
+        else
+        {
+          wx.showToast({
+            title: '用户名或密码输入错误',
+            icon: "none",
+            duration: 2000
+          })
+          app.globalData.ifBind = false
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -39,24 +51,7 @@ this.setData({
   onReady: function () {
 
   },
-  formSubmit:function(e){
-    wx.showLoading({
-      title: '加载中',
-    })
-    wx.request({
-      url: 'https://test.taropowder.cn/api/save',
-      data: {
-        msg:e.detail.value
-      },
-      success: function (res) {
-     
-          wx.switchTab({
-            url: '../index/index',
-          })
-      }
-    })
-   
-  },
+
   /**
    * 生命周期函数--监听页面显示
    */

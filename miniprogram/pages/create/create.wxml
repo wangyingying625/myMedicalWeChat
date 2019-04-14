@@ -1,0 +1,19 @@
+<view class='big'>
+  <form bindsubmit="formSubmit">
+    <view class='msg'>
+      <text>用户名：</text>
+      <input type='text' name='name' class='inpT'></input>
+    </view>
+    <view class='msg'>
+      <text>密 码：</text>
+      <input type='password' name='password'  class='inpT'></input>
+    </view>
+      <view class='msg'>
+<radio-group class="radio-group" bindchange="radioChange">
+        <radio style='color:#f98e64' class='gender' checked value="men"/>男
+        <radio style='color:#f98e64;margin-left:50rpx;' class='gender' value="women"  />女
+</radio-group>
+  </view>
+     <button class='submit' form-type='submit'>确定</button>
+    </form>
+</view>

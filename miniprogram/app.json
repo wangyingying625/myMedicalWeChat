@@ -1,20 +1,27 @@
 {
   "pages": [
-   
+      
     "pages/index/index",
     "pages/storageConsole/storageConsole",
     "pages/geRen/geRen",
     "pages/family/family",
     "pages/change/change",
     "pages/medical/medical",
-    "pages/audit/audit",
-    "pages/suc/suc"
+  "pages/audit/audit",
+    "pages/suc/suc",
+    "pages/eat/eat",
+    "pages/jieDu/jieDu",
+    "pages/danger/danger",
+    "pages/smart/smart",
+    "pages/temp/temp",
+    "pages/create/create",
+    "pages/bind/bind"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#66c7ce",
-    "navigationBarTitleText": "病历本",
+    "navigationBarTitleText": "健康随身册",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -33,7 +40,7 @@
         "pagePath": "pages/medical/medical",
         "iconPath": "images/medical.png",
         "selectedIconPath": "images/medical1.png",
-        "text": "记录本"
+        "text": "随身册"
       },
       {
         "pagePath": "pages/family/family",

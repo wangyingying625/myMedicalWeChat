@@ -10,6 +10,11 @@ Page({
     imagePath: '',
   },
   formSubmit:function(e){
+    wx.showToast({
+      title: '加载中',
+      icon:'loading',
+      duration: 2000
+    })
     if (e.detail.value.type=='')return false;
     else
     wx.navigateTo({

@@ -1,10 +1,51 @@
-/* miniprogram/pages/audit/audit.wxss */
-@import '../change/change.wxss';
-.forText{
-width: 42%;
-margin-right: 30rpx;
+.help {
+  width: 700rpx;
+  margin: 0 auto;
+}
+.help .help_item {
+  margin: 10rpx auto;
+}
+.help .help_item .title {
+  font-size: 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #e2e2e2;
+  display: flex;
+}
+.help .help_item .title .title_1 {
+  width: 630rpx;
+  height: 60rpx;
+  padding-left: 20rpx;
+}
+.help .help_item .title .title_2 {
+  width: 50rpx;
+  height: 60rpx;
+  text-align: center;
+}
+.help .help_item .title .title_2 image {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 10rpx auto;
+}
+.help .help_item .detail {
+  margin: 10rpx auto;
+  font-size: 35rpx;
+  line-height: 40rpx;
+
+}
+.msg{
+  display: flex;
+  align-content: center;
+  height: 90rpx;
+  justify-content: center;
+  margin-top: 30rpx;
 }
 .inpT{
-  width: 100%;
-  
+  width: 65%;
+  border: 2rpx solid #676767;
+  border-radius: 10rpx;
+  padding: 10rpx;
+}
+text{
+  font-size: 35rpx;
 }

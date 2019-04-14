@@ -1,0 +1,19 @@
+.con{
+  padding: 25rpx;
+}
+text{
+  color: #3f3d3d;
+}
+.title{
+  text-align: center;
+  margin-top: 20rpx;
+}
+.tips{
+  padding: 15rpx;
+  margin-top: 35rpx;
+   background-color: #d1e5e6;
+  border-radius: 20rpx;
+}
+.conMsg text{
+  font-size: 33rpx
+}
