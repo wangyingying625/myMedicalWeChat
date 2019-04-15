@@ -19,7 +19,6 @@ this.setData({
   list: content,
   showIndex: content[0].id,
 })
-    console.log(this.data.list)
    
   },
   panel: function (e) {
@@ -45,11 +44,8 @@ this.setData({
     })
     wx.request({
       url: 'https://test.taropowder.cn/api/save',
-      data: {
-        msg:e.detail.value
-      },
+      data: e.detail.value,
       success: function (res) {
-     
           wx.switchTab({
             url: '../index/index',
           })

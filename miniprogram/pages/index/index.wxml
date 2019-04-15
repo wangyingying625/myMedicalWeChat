@@ -1,22 +1,24 @@
 <!--index.wxml-->
 
-<view class='allo'>
-  <!--<text>您已经<text class='num'>100</text>天没有检查了,请及时检查</text>-->
+<view class='allo'  wx:if="{{used}}">
   <text>距离上次体检<text class='num'>{{date}}</text>天</text>
+</view>
+<view class='allo'  wx:if="{{!used}}">
+  <text>您还没有上传化验单</text>
 </view>
 <view class='box'>
   <view wx:if="{{isAdmin}}">
-    <swiper class='center' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
-      <block wx:for="{{msgList}}" wx:key="*this">
-        <swiper-item>
-          <view class='center'>
-            <view class="card">
-              <view class='forText'>
-                <text> {{item.msg}}</text>
+    <swiper class='center' wx:if="{{msgList}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+      <block wx:for="{{msgList}}"  data-id='{{item.id}}' wx:key="*this">
+        <swiper-item  data-id='{{item.id}}' >
+          <view class='center'  data-id='{{item.id}}' >
+            <view class="card"  data-id='{{item.id}}' >
+              <view class='forText'  data-id='{{item.id}}' >
+                <text  data-id='{{item.id}}' > {{item.msg}}</text>
               </view>
-              <view class='butList'>
-                <button class='butY'>同意</button>
-                <button class='butN'>拒绝</button>
+              <view class='butList'  data-id='{{item.id}}' >
+                <button   data-id='{{item.id}}'  class='butY' bindtap='agree'>同意</button>
+                <button  data-id='{{item.id}}'  class='butN' bindtap='no'>拒绝</button>
               </view>
             </view>
           </view>

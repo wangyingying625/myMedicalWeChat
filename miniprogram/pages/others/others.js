@@ -2,9 +2,19 @@ import * as echarts from '../../ec-canvas/echarts';
 
 const app = getApp();
 Page({
+  onShareAppMessage: function (res) {
+    return {
+      title: '',
+      path: '/pages/index/index',
+      success: function () { },
+      fail: function () { }
+    }
+  },
   data: {
+    date: '',
     list: '',
     list1: '',
+    used:'',
     ec: '',
     index: 0,
     echartt: '',
@@ -12,15 +22,12 @@ Page({
   showJson: function () {
     var that = this;
     var data = that.data.data1;
-    console.log(data)
-    console.log(that.data.list1[that.data.index])
     that.picture(that.data.list1[that.data.index]);
   },
 
 
   picture: function (key) {
     var that = this;
-    console.log("picture")
     this.setData({
       ec: {
         onInit: function (canvas, width, height) {
@@ -34,6 +41,7 @@ Page({
           var indictorsMap = new Map();
           var timeArray = new Array();
           for (var image in data[key]) {
+            console.log(data[key][image])
             timeArray.push(data[key][image]['created_at']);
             for (var indictor in data[key][image]['indicators']) {
               indictors.push(data[key][image]['indicators'][indictor]['name_ch']);
@@ -58,11 +66,6 @@ Page({
           var seriesObject = that.mapToObject(indictorsMap);
           var option = null;
           option = {
-            title: {
-              text: key,
-              left: 'center',
-              top: -2,
-            },
             tooltip: {
               show: true,
               trigger: 'axis'
@@ -127,12 +130,11 @@ Page({
 
           chart.setOption(option);
           that.chart = chart
-          console.log(that.chart);
+          // console.log(that.chart);
           return chart;
         },
       }
     });
-    console.log(this.data.ec)
   },
   getchartOption: function (key) {
     var that = this;
@@ -141,7 +143,6 @@ Page({
     var indictorsMap = new Map();
     var timeArray = new Array();
     for (var image in data[key]) {
-      console.log(data[key][image])
       timeArray.push(data[key][image]['created_at']);
       for (var indictor in data[key][image]['indicators']) {
         indictors.push(data[key][image]['indicators'][indictor]['name_ch']);
@@ -166,23 +167,16 @@ Page({
     var seriesObject = that.mapToObject(indictorsMap);
     var option = null;
     option = {
-      title: {
-        text: key,
-        left: 'center',
-        top: -2,
-      },
       tooltip: {
         show: true,
         trigger: 'axis'
       },
-      //color: ["#37A2DA", "#67E0E3", "#9FE6B8"],
       legend: {
         data: Array.from(indictors),
         type: 'scroll',
         top: 18,
         left: 'center',
         z: 100,
-        //backgroundColor: '#ffffff',
       },
       grid: {
         containLabel: true
@@ -240,7 +234,6 @@ Page({
     this.setData({
       index: e.detail.value
     })
-    // console.log(char)
     that.chart.setOption(that.getchartOption(that.data.list1[that.data.index]))
   },
   mapToObject: function (indictors) {
@@ -260,22 +253,30 @@ Page({
     wx.request({
       url: 'https://test.taropowder.cn/api/show/userid',
       data: {
-        openId: app.globalData.openid,
-        user_id: options.id
+        user_id: options.id,
+        openId: app.globalData.openid
       },
       success: function (res) {
+        if (res.data && res.data!='')
+        {
         that.setData({
+          used:true,
           data1: res.data,
-          //  list: Objqect.keys(res.data)
           list1: Object.keys(res.data),
           list: ['jq']
         })
         that.showJson();
+        }
+        else{
+          that.setData({
+            used:false
+          })
+        }
       }
     })
-
-    // this.barComponent = this.selectComponent('#mychart-dom-bar');
-    // this.init_bar(token);
+    this.setData({
+      date: app.globalData.date,
+    })
   },
 
   onReady() {

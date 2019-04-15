@@ -12,7 +12,6 @@ Page({
   },
   bindDateChange(e) {
     var t = 'dateChose'
-    // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       [t]: e.detail.value
     })
@@ -25,7 +24,6 @@ Page({
     this.setData({
       dateChose:year+'-'+month+'-'+day
     })
-    console.log(this.data.dateChose)
   },
   formSubmit: function (e) {
     wx.showLoading({
@@ -47,8 +45,6 @@ Page({
           date: e.detail.value.date
         },
         success: function (res) {
-          console.log(res.data)
-          console.log( JSON.stringify(res.data) )
           wx.navigateTo({
             url: '../audit/audit?content=' + JSON.stringify(res.data)
           })
@@ -71,7 +67,7 @@ Page({
     // 选择图片
     wx.chooseImage({
         count: 1,
-          sizeType: ['compressed'],
+          sizeType: ['original'],
             sourceType: ['album', 'camera'],
               success: function(res) {
                 wx.showLoading({
@@ -86,7 +82,6 @@ Page({
             openId: app.globalData.openid
           },
           success(res) {
-            console.log(res.data)
             res.data=JSON.parse(res.data)
             app.globalData.fileID = res.data.id
             app.globalData.imagePath = "https://test.taropowder.cn/storage/" + res.data.name

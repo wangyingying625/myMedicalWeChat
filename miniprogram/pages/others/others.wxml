@@ -1,13 +1,23 @@
 <!--index.wxml-->
 <view>
+  
+ <view class='allo' wx:if="{{!used}}">
+    <text>他还没有上传化验单</text>
+  </view>
+  <view wx:if="{{used}}">
   <view class="section">
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{list1}}">
     <view class="picker">
       选择化验：{{list1[index]}}
     </view>
   </picker>
+  
 </view>
+
+
+
    <view class="charts" wx:for="{{list}}" >
   <ec-canvas   ec="{{ec}}"></ec-canvas>
   </view> 
+  </view>
 </view>

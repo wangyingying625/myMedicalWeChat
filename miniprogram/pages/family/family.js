@@ -12,13 +12,27 @@ haveFam:'',
 createDis:'none',
     addDis: 'none'
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.request({
+      url: 'https://test.taropowder.cn/api/info',
+      data: {
+        openId: app.globalData.openid
+      },
+      success: function (res) {
+        app.globalData.msg = res.data
+        wx.setStorage({
+          key: 'msg',
+          data: res.data,
+        })
+        that.setData({
+          msg: res.data
+        })
+      }
+    })
     var that=this
-    console.log(app.globalData.msg)
     if (app.globalData.msg.status == 'admin')
       this.setData({
         isAdmin: true
@@ -27,8 +41,10 @@ createDis:'none',
       this.setData({
         isAdmin: false
       })
+    console.log(app.globalData.msg.status)
     if (this.data.isAdmin || app.globalData.msg.status=='member')
     {
+      console.log("onLoad")
     this.setData({
       haveFam:true
     })
@@ -39,7 +55,7 @@ createDis:'none',
           openId: app.globalData.openid
         },
         success: function (res) {
-          console.log(res.data)
+          console.log("onLoad")
           that.setData({
             List: res.data
           })
@@ -52,7 +68,6 @@ createDis:'none',
       })
   },
   nav:function(e){
-    console.log(e.target.dataset.id)
     wx.navigateTo({
       url: '../others/others?id=' + e.target.dataset.id,
     })
@@ -144,12 +159,12 @@ createDis:'none',
       success: function (res) {
         if(res.data.status==true)
         wx.showToast({
-          title: '您的申请已发送',
+          title: res.data.message,
           duration: 2000
         })
         else{
           wx.showToast({
-            title: '没有这个家庭',
+            title: res.data.message,
             icon:'none',
             duration: 2000
           })
@@ -211,7 +226,7 @@ createDis:'none',
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-this.onLoad()
+    this.onLoad()
   },
 
   /**

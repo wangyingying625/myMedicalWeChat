@@ -24,12 +24,15 @@ Page({
         openId: app.globalData.openid
       },
       success: function (res) {
+        wx.setStorage({
+          key: 'msg',
+          data: res.data,
+        })
         app.globalData.msg = res.data
         app.globalData.ifBind = true
           wx.switchTab({
             url: '../geRen/geRen',
           })
-          
       }
     })
   },

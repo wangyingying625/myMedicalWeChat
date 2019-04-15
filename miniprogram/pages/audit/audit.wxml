@@ -8,23 +8,23 @@
       <view class='detail'  style="display:{{showIndex == value.id?'block':'none'}}">
         <view class='msg'>
           <text>中文名：</text>
-          <input type='text' class='inpT' name='[{{value.id}}][name_ch]' value='{{value.name_ch}}'></input>
+          <input type='text' class='inpT' name='{{value.id}}[name_ch]' value='{{value.name_ch}}'></input>
         </view>
         <view class='msg'>
           <text>英文名：</text>
-          <input type='text' class='inpT' name='[{{value.id}}][name_en]' value='{{value.name_en}}'></input>
+          <input type='text' class='inpT' name='{{value.id}}[name_en]' value='{{value.name_en}}'></input>
         </view>
         <view class='msg'>
           <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;值：</text>
-          <input type='text' class='inpT' name='[{{value.id}}][value]' value='{{value.value}}'></input>
+          <input type='text' class='inpT' name='{{value.id}}[value]' value='{{value.value}}'></input>
         </view>
         <view class='msg'>
           <text decode="{{true}}">&nbsp;&nbsp;&nbsp;上限：</text>
-          <input type='text' class='inpT' name='[{{value.id}}][upper_limit]' value='{{value.upper_limit}}'></input>
+          <input type='text' class='inpT' name='{{value.id}}[upper_limit]' value='{{value.upper_limit}}'></input>
         </view>
         <view class='msg'>
           <text decode="{{true}}">&nbsp;&nbsp;&nbsp;下限：</text>
-          <input type='text' class='inpT' name='[{{value.id}}][lower_limit]' value='{{value.lower_limit}}'></input>
+          <input type='text' class='inpT' name='{{value.id}}[lower_limit]' value='{{value.lower_limit}}'></input>
         </view>
       </view>
     </view>

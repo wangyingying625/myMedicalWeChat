@@ -5,7 +5,7 @@
       <input type='text' name='name' class='inpT'></input>
     </view>
     <view class='msg'>
-      <text>密 码：</text>
+      <text decode="{{true}}">密&nbsp;&nbsp;码：</text>
       <input type='password' name='password' class='inpT'></input>
     </view>
      <button class='submit' form-type='submit'>验证</button>

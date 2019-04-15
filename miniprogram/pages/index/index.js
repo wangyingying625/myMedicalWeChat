@@ -2,56 +2,98 @@ import * as echarts from '../../ec-canvas/echarts';
 
 const app = getApp();
 Page({
+  data: {
+    date: '',
+    isAdmin: '',
+    display: '',
+    used:'',
+    indicatorDots: true,
+    msgList: '',
+  },
+  agree: function(e) {
+    var that = this
+    wx.request({
+      url: 'https://test.taropowder.cn/api/family/accept',
       data: {
-        date: '',
-        isAdmin: '',
-        display:'',
-        pushMsg: [{
-            id: 0,
-            name: "甲状腺激素",
-            description: "甲状腺激素：主要作用是促进动物的生长发育、新陈代谢，以及提高动物的兴奋性。要保证甲状腺激素含量正常需要充足的睡眠与放松的心情，避免太大的精神压力。否则会出现便次增多、体重减少等症状"
-          },
-          {
-            id: 1,
-            name: "血红蛋白",
-            description: "血红蛋白：主要功能是运输氧气。"
-          }
-        ],
-
-        indicatorDots: true,
-        msgList: [{
-          id: "1",
-          msg: "mldwyy申请加入您的家庭"
-        }, {
-          id: "2",
-          msg: "cldyy申请加入您的家庭"
-        }],
+        openId: app.globalData.openid,
+        user_id: e.target.dataset.id
       },
-        onLoad: function() {
-          console.log(app.globalData)
-          if ((wx.getStorageSync('openid')))
+      success: function(res) {
+        that.onLoad()
+      },
+    })
+  },
+  no: function(e) {
+    var that = this
+    wx.request({
+      url: 'https://test.taropowder.cn/api/family/no',
+      data: {
+        openId: app.globalData.openid,
+        user_id: e.target.dataset.id
+      },
+      success: function(res) {
+        that.onLoad()
+      },
+    })
+  },
+  onLoad: function() {
+    var that = this
+    if (!(wx.getStorageSync('openid'))) {
+      wx.switchTab({
+        url: '../geRen/geRen',
+      })
+    }
+    if (app.globalData.msg.status == 'admin')
+      this.setData({
+        isAdmin: true
+      })
+    else
+      this.setData({
+        isAdmin: false
+      })
+    if (app.globalData.openid != '' && app.globalData.openid) {
+      wx.request({
+        url: 'https://test.taropowder.cn/api/days',
+        data: {
+          openId: app.globalData.openid
+        },
+        success: function(res) {
+          if(res.data.status==true)
           {
-            app.globalData.ifBind=true
-          }
-
-          else
-
-          {
-            wx.switchTab({
-              url: '../geRen/geRen',
-            })
-          }
-          if(app.globalData.msg.status=='admin')
-          this.setData({
-            isAdmin:true
+          app.globalData.date = res.data.days
+          that.setData({
+            used: true,
+            date: res.data.days,
           })
-          else
-            this.setData({
-              isAdmin: false
+          }
+          else{
+            that.setData({
+              used:false,
             })
-          this.setData({
-            date: app.globalData.date,
+            app.globalData.date =''
+          }
+        },
+      })
+      wx.request({
+        url: 'https://test.taropowder.cn/api/family/manage',
+        data: {
+          openId: app.globalData.openid
+        },
+        success: function(res) {
+          if (res.data == '')
+            that.setData({
+              msgList: false
+            })
+            else
+          that.setData({
+            msgList: res.data
           })
         },
-        onReady() {}
-      });
+      })
+    }
+  },
+  onReady() {},
+  onShow(){
+    this.onLoad()
+  }
+});

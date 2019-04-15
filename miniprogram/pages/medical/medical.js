@@ -14,38 +14,33 @@ Page({
     date: '',
     list: '',
     list1: '',
-    ec:'',
+    ec: '',
+    used: '',
     index: 0,
-    echartt:'',
+    echartt: '',
   },
   showJson: function() {
     var that = this;
     var data = that.data.data1;
-    console.log(data)
-    console.log(that.data.list1[that.data.index])
     that.picture(that.data.list1[that.data.index]);
   },
 
 
   picture: function(key) {
-    console.log("picture")
     var that = this;
     this.setData({
-      ec:{
-        onInit: function (canvas, width, height) {
-          console.log("ec")
+      ec: {
+        onInit: function(canvas, width, height) {
           const chart = echarts.init(canvas, null, {
             width: width,
             height: height
           });
           canvas.setChart(chart);
-          console.log('canvas');
           var data = that.data.data1;
           var indictors = new Array();
           var indictorsMap = new Map();
           var timeArray = new Array();
           for (var image in data[key]) {
-            console.log(data[key][image])
             timeArray.push(data[key][image]['created_at']);
             for (var indictor in data[key][image]['indicators']) {
               indictors.push(data[key][image]['indicators'][indictor]['name_ch']);
@@ -68,14 +63,9 @@ Page({
             }
           }
           var seriesObject = that.mapToObject(indictorsMap);
-          console.log(timeArray)
           var option = null;
           option = {
-            title: {
-              text: key,
-              left: 'center',
-              top: -2,
-            },
+
             tooltip: {
               show: true,
               trigger: 'axis'
@@ -87,7 +77,6 @@ Page({
               top: 18,
               left: 'center',
               z: 100,
-              //backgroundColor: '#ffffff',
             },
             grid: {
               containLabel: true
@@ -120,7 +109,7 @@ Page({
               boundaryGap: false,
               data: timeArray
             },
-           
+
             series: seriesObject,
             yAxis: {
               x: 'center',
@@ -128,10 +117,8 @@ Page({
               axisLabel: {
                 formatter: '{value}'
               },
-              splitLine: 
-              {
-                lineStyle: 
-                {
+              splitLine: {
+                lineStyle: {
                   type: 'dashed'
                 }
               }
@@ -140,22 +127,18 @@ Page({
 
           chart.setOption(option);
           that.chart = chart
-          // console.log(that.chart);
           return chart;
         },
       }
     });
-   console.log(this.data.ec)
   },
-  getchartOption:function(key){
-    console.log(key)
+  getchartOption: function(key) {
     var that = this;
     var data = that.data.data1;
     var indictors = new Array();
     var indictorsMap = new Map();
     var timeArray = new Array();
     for (var image in data[key]) {
-      console.log(data[key][image])
       timeArray.push(data[key][image]['created_at']);
       for (var indictor in data[key][image]['indicators']) {
         indictors.push(data[key][image]['indicators'][indictor]['name_ch']);
@@ -173,31 +156,22 @@ Page({
               indictorsMap.get(indictor).push(data[key][image]['indicators'][indic]['value']);
             }
           }
-
         }
       }
     }
     var seriesObject = that.mapToObject(indictorsMap);
-    console.log(timeArray)
     var option = null;
     option = {
-      title: {
-        text: key,
-        left: 'center',
-        top: -2,
-      },
       tooltip: {
         show: true,
         trigger: 'axis'
       },
-      //color: ["#37A2DA", "#67E0E3", "#9FE6B8"],
       legend: {
         data: Array.from(indictors),
         type: 'scroll',
         top: 18,
         left: 'center',
         z: 100,
-        //backgroundColor: '#ffffff',
       },
       grid: {
         containLabel: true
@@ -223,7 +197,7 @@ Page({
             show: true
           }
         }
-       
+
       },
       calculable: true,
       xAxis: {
@@ -239,10 +213,8 @@ Page({
         axisLabel: {
           formatter: '{value}'
         },
-        splitLine:
-        {
-          lineStyle:
-          {
+        splitLine: {
+          lineStyle: {
             type: 'dashed'
           }
         }
@@ -250,13 +222,11 @@ Page({
     };
     return option;
   },
-  bindPickerChange:function(e){
-    var that=this;
-    console.log("bindPicker")
-       this.setData({
-         index: e.detail.value
-       })
-      // console.log(char)
+  bindPickerChange: function(e) {
+    var that = this;
+    this.setData({
+      index: e.detail.value
+    })
     that.chart.setOption(that.getchartOption(that.data.list1[that.data.index]))
   },
   mapToObject: function(indictors) {
@@ -272,30 +242,36 @@ Page({
     return series;
   },
   onLoad: function(options) {
-    var that=this
+    var that = this
+    if ((app.globalData.date != '' && app.globalData.date) || app.globalData.date==0)
+    {
+      that.setData({
+        used: true,
+        date:app.globalData.date,
+      })
     wx.request({
       url: 'https://test.taropowder.cn/api/show/user',
       data: {
         openId: app.globalData.openid
       },
-      success: function (res) {
-       that.setData({
-         data1: res.data,
-        //  list: Objqect.keys(res.data)
-         list1: Object.keys(res.data),
-        list:['jq']
-       })
-       console.log(that.data.list)
-        that.showJson();
+      success: function(res) {
+          that.setData({
+            data1: res.data,
+            list1: Object.keys(res.data),
+            list: ['jq']
+          })
+          that.showJson();
       }
     })
-    this.setData({
-      date: app.globalData.date,
-    })
-    // this.barComponent = this.selectComponent('#mychart-dom-bar');
-    // this.init_bar(token);
+    }
+    else{
+      that.setData({
+        used: false,
+      })
+    }
   },
- 
-  onReady() {
-  }
+  onShow() {
+    this.onLoad()
+  },
+  onReady() {}
 });
