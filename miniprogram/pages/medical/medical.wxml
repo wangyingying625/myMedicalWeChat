@@ -14,7 +14,7 @@
         </view>
       </picker>
     </view>
-    <view class="charts" wx:for="{{list}}">
+    <view class="charts" wx:for="{{list}}" wx:key="{{index}}">
       <ec-canvas ec="{{ec}}"></ec-canvas>
     </view>
   </view>

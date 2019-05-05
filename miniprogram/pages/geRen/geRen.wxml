@@ -1,12 +1,12 @@
 <view>
   <view wx:if="{{ifBind}}">
-  <view class='img'>
-    <button wx:if="{{!userInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfoo"> 获取头像昵称 </button>
-    <view class='forText' wx:if="{{userInfo}}">
-      <image src='{{userInfo.avatarUrl}}'></image>
-      <text>{{userInfo.nickName}}</text>
+    <view class='img'>
+      <button wx:if="{{getUserInfoFail}}" open-type="getUserInfo" bindgetuserinfo="getUserInfoo"> 获取头像昵称 </button>
+      <view class='forText' wx:if="{{!getUserInfoFail}}">
+        <image src='{{userInfo.avatarUrl}}'></image>
+        <text>{{userInfo.nickName}}</text>
+      </view>
     </view>
-  </view>
     <view class='msg'>
       <view class='box'>
         <view class='left'>
@@ -38,8 +38,7 @@
       </navigator>
     </view>
   </view>
-  <view class='msg' style='margin-top:100rpx' 
-  wx:if="{{!ifBind}}">
+  <view class='msg' style='margin-top:100rpx' wx:if="{{!ifBind}}">
     <view>
       <view>
         <text>您还没有绑定账号</text>

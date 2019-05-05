@@ -20,7 +20,7 @@
       <view class='msg'>
         <text decode="{{true}}">生日：</text>
         <picker class='inpT' mode="date" name='birthday' value="{{msg.birthday}}" start="1900-01-01" end="2020-09-01" bindchange="bindDateChange">
-          <view class="picker">
+          <view class="picker" style='height:40rpx'>
             {{msg.birthday}}
           </view>
         </picker>

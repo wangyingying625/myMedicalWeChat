@@ -16,6 +16,7 @@ createDis:'none',
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     wx.request({
       url: 'https://test.taropowder.cn/api/info',
       data: {
@@ -30,42 +31,43 @@ createDis:'none',
         that.setData({
           msg: res.data
         })
-      }
-    })
-    var that=this
-    if (app.globalData.msg.status == 'admin')
-      this.setData({
-        isAdmin: true
-      })
-    else
-      this.setData({
-        isAdmin: false
-      })
-    console.log(app.globalData.msg.status)
-    if (this.data.isAdmin || app.globalData.msg.status=='member')
-    {
-      console.log("onLoad")
-    this.setData({
-      haveFam:true
-    })
-      wx.request({
-        url: 'https://test.taropowder.cn/api/family/info',
-        data: {
-          family_id: app.globalData.msg.family_id,
-          openId: app.globalData.openid
-        },
-        success: function (res) {
-          console.log("onLoad")
+        if (app.globalData.msg.status == 'admin')
           that.setData({
-            List: res.data
+            isAdmin: true
+          })
+        else
+          that.setData({
+            isAdmin: false
+          })
+        if (that.data.isAdmin || app.globalData.msg.status == 'member') {
+          that.setData({
+            haveFam: true
+          })
+          wx.request({
+            url: 'https://test.taropowder.cn/api/family/info',
+            data: {
+              family_id: app.globalData.msg.family_id,
+              openId: app.globalData.openid
+            },
+            success: function (res) {
+              console.log("onLoad")
+              that.setData({
+                List: res.data
+              })
+            }
           })
         }
-      })
-    }
-    else
-      this.setData({
-        haveFam: false
-      })
+        else
+          that.setData({
+            haveFam: false
+          })
+
+
+
+
+      }
+    })
+  
   },
   nav:function(e){
     wx.navigateTo({

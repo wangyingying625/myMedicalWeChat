@@ -1,5 +1,5 @@
 // miniprogram/pages/audit/audit.js
-
+const app = getApp();
 Page({
 
   /**
@@ -46,8 +46,9 @@ this.setData({
       url: 'https://test.taropowder.cn/api/save',
       data: e.detail.value,
       success: function (res) {
+        var a=true;
           wx.switchTab({
-            url: '../index/index',
+            url: '../medical/medical?change='+a,
           })
       }
     })

@@ -21,7 +21,6 @@ Page({
   this.setData({
     msg:app.globalData.msg
   })
-  console.log(this.items)
     if(this.data.msg.sex=="男")
     {
 

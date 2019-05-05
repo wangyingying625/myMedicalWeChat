@@ -70,7 +70,7 @@ Page({
             that.setData({
               used:false,
             })
-            app.globalData.date =''
+            app.globalData.date =-1
           }
         },
       })

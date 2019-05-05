@@ -37,6 +37,7 @@ text{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 30rpx
 }
 .left{
   margin-right: 30rpx;

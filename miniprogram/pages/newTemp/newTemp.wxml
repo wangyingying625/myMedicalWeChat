@@ -1,0 +1,36 @@
+<view>
+<button class='newRow' bindtap='addItem'>添加一行</button>
+  <form bindsubmit="formSubmit">
+  <view class='help'  wx:for="{{info.item}}" wx:key="{{index}}">
+    <view class='help_item'>
+      <view class='detail'>
+        <view class='msg'>
+          <text>中文名：</text>
+          <input type='text' class='inpT' name='temp[{{index}}][name_ch]'></input>
+        </view>
+        <view class='msg'>
+          <text>英文名：</text>
+          <input type='text' class='inpT' name='temp[{{index}}][name_en]'></input>
+        </view>
+        <view class='msg'>
+          <text decode="{{true}}">&nbsp;&nbsp;&nbsp;上限：</text>
+          <input type='text' class='inpT' name='temp[{{index}}][upper_limit]'></input>
+        </view>
+        <view class='msg'>
+          <text decode="{{true}}">&nbsp;&nbsp;&nbsp;下限：</text>
+          <input type='text' class='inpT' name='temp[{{index}}][lower_limit]'></input>
+        </view>
+      </view>
+    </view>
+  </view>
+    <view class='msg'>
+      <text>模板名称：</text>
+      <input required type='text' class='inpT' name='tempName'></input>
+    </view>
+    <view class='msg'>
+      <text>化验名称：</text>
+      <input required type='text' class='inpT' name='type'></input>
+    </view>
+    <button class='submit' form-type='submit'>确定</button>
+  </form>
+</view>

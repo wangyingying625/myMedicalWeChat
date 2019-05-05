@@ -1,0 +1,44 @@
+<view class="modify-page">
+   <!-- 隐藏canvas 保存图片用 -->
+  <canvas canvas-id="tempCanvas" disable-scroll="true" style="width:{{tempCanvasWidth}}px; height:{{tempCanvasHeight}}px; position:absolute;left:-999999px"></canvas>
+
+  <!-- 主页面 -->
+  <view class="imageView" wx:if="{{page==='mainPage'}}" style="height:{{imgViewHeight}}px">
+    <view class="noImageBox" wx:if="{{imageNotChoosed}}" bindtap='chooseOneImage'><text>点击选择图片</text></view>
+    <view class="saveButton" wx:if="{{!imageNotChoosed}}" bindtap='saveImgToPhone'><text class="icon-save"></text></view>
+    <image src="{{tempImageSrc}}" style="width:{{imgWidth}}px;height:{{imgHeight}}px;top:{{imgTop}}px;left:{{imgLeft}}px" disable-scroll="true"></image>
+  </view>
+   <!-- 裁剪页面 -->
+  <view class="imageView" wx:if="{{page==='cropPage'}}" style="height:{{imgViewHeight}}px">
+    <image src="{{tempImageSrc}}" style="width:{{imgWidth}}px;height:{{imgHeight}}px;top:{{imgTop}}px;left:{{imgLeft}}px" disable-scroll="true" bindtouchstart="uploadScaleStart" bindtouchmove="uploadScaleMove" bindtouchend="uploadScaleEnd"></image>
+    <view wx:if="{{isCroper}}" class="cropper-wraper">
+      <view class="corpper-view-box" bindtouchstart="croperStart" bindtouchmove="croperMove" style="width:{{cutW}}px;height:{{cutH}}px;left:{{cutL}}px;top:{{cutT}}px">
+        <view class="cropper-dashed-h"></view>
+        <view class="cropper-dashed-v"></view>
+        <view class="cropper-line-t" data-drag="top"></view>
+        <view class="cropper-line-r" data-drag="right"></view>
+        <view class="cropper-line-b" data-drag="bottom"></view>
+        <view class="cropper-line-l" data-drag="left"></view>
+        <view class="cropper-point point-tr" data-drag="topTight"></view>
+        <view class="cropper-point point-rb" data-drag="rightBottom" catchtouchstart="dragPointStart" catchtouchmove="dragPointMove"></view>
+        <view class="cropper-point point-bl" data-drag="bottomLeft"></view>
+        <view class="cropper-point point-lt" data-drag="leftTop"></view>
+      </view>
+    </view>
+  </view>
+  <!-- 主页面-底部 <image src="../../image/1.svg"></image>-->
+  <view class="toolbar-bottom" wx:if="{{page==='mainPage'}}">
+    <view bindtap='toCropPage'><text class="icon-cutter"></text><text class="text">裁剪</text></view>
+  </view>
+  <!-- 裁剪页面-底部 -->
+  <view class="toolbar-bottom" wx:if="{{page==='cropPage'}}">
+    <view bindtap='openCroper'><text class="icon-cutbox"></text><text class="text">裁剪框</text></view>
+  </view>
+  <!-- 裁剪和添加文字时调出的确认条 -->
+  <view class="confirm-bar1" wx:if="{{isCroper||allText.isTextActive}}">
+    <text class="icon-cross" bindtap='cancelCrop'></text>
+  </view>
+  <view class="confirm-bar2" wx:if="{{isCroper||allText.isTextActive}}">
+    <text class="icon-checkmark" bindtap='competeCrop'></text>
+  </view>
+</view>

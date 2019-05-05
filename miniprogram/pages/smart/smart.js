@@ -45,9 +45,20 @@ Page({
           date: e.detail.value.date
         },
         success: function (res) {
+          if(res.data.status==true)
+          {
           wx.navigateTo({
-            url: '../audit/audit?content=' + JSON.stringify(res.data)
+            url: '../audit/audit?content=' + JSON.stringify(res.data.indicators)
           })
+          }
+          else
+          {
+            wx.showToast({
+              title: '图片识别失败',
+              icon: "none",
+              duration: 2000
+            })
+          }
         }
       })
   },

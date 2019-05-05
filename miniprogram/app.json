@@ -1,6 +1,9 @@
 {
   "pages": [
-    "pages/index/index",
+      "pages/index/index",
+    "pages/temp/temp",
+    "pages/newTemp/newTemp",
+    "pages/modifyPhoto/modify",
     "pages/storageConsole/storageConsole",
     "pages/geRen/geRen",
     "pages/family/family",
@@ -11,7 +14,7 @@
     "pages/jieDu/jieDu",
     "pages/danger/danger",
     "pages/smart/smart",
-    "pages/temp/temp",
+   
     "pages/create/create",
     "pages/bind/bind",
     "pages/others/others"

@@ -13,7 +13,7 @@
         <view wx:for="{{List.members}}" wx:key="{{index}}">
           <view class='navigator' bindtap='nav' data-id='{{item.id}}'>
             <view data-id='{{item.id}}' class='name'>
-              <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}\n</text>
+              <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}&nbsp;&nbsp;&nbsp;&nbsp;<text style='color:#fc7373' wx:if="{{item.status=='admin'}}">管理员</text>\n</text>
               <text data-id='{{item.id}}' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.sex}}</text>
             </view>
           </view>

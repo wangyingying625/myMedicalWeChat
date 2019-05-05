@@ -243,7 +243,7 @@ Page({
   },
   onLoad: function(options) {
     var that = this
-    if ((app.globalData.date != '' && app.globalData.date) || app.globalData.date==0)
+    if ((app.globalData.date !=-1 && app.globalData.date) || app.globalData.date==0)
     {
       that.setData({
         used: true,
@@ -273,5 +273,6 @@ Page({
   onShow() {
     this.onLoad()
   },
-  onReady() {}
+  onReady() {
+  }
 });

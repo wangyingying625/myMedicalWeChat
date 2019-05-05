@@ -10,11 +10,10 @@ Page({
   onLoad: function() {
     this.setData({
       msg: app.globalData.msg,
+      userInfo:app.globalData.userInfo,
     })
     var that = this;
     var openid = (wx.getStorageSync('openid'));
-    // app.globalData.openid = (wx.getStorageSync('openid'))
-    // app.globalData.msg = (wx.getStorageSync('msg'))
     if (!openid) {
       var that = this
       wx.login({
@@ -31,6 +30,20 @@ Page({
                 data: res.data.openId,
               })
               app.globalData.openid = res.data.openId
+              wx.getUserInfo({
+                success: res => {
+                  that.setData({
+                    userInfo: res.userInfo,
+                  })
+                  app.globalData.userInfo = res.userInfo
+                },
+                fail: res => {
+                  that.setData({
+                    getUserInfoFail: true,
+                    userInfo: ''
+                  })
+                }
+              })
               if (res.data.status == true) {
                 that.setData({
                   ifBind: true,
@@ -41,19 +54,6 @@ Page({
                   data: res.data.user,
                 })
                 app.globalData.msg = res.data.user
-                wx.getUserInfo({
-                  success: res => {
-                    this.setData({
-                      userInfo: res.userInfo,
-                    })
-                    app.globalData.userInfo = res.userInfo
-                  },
-                  fail: res => {
-                    that.setData({
-                      getUserInfoFail: true,
-                    })
-                  }
-                })
               } else if (res.data.status == false) {
                 that.setData({
                   ifBind: false,
@@ -144,39 +144,29 @@ Page({
       this.setData({
         userInfo: e.detail.userInfo,
         getUserInfoFail: false,
-        hasUserInfo: true,
       })
       that.setUserInfo()
     } else {
       this.setData({
         getUserInfoFail: true,
-        hasUserInfo: false,
       })
       this.openSetting();
     }
-
   },
   openSetting: function() {
     wx.showToast({
-
       title: '您还没有登录',
-
       icon: 'none',
-
       duration: 2000
-
     })
-
     setTimeout(function() {
-
       wx.hideToast()
-
     }, 2000)
     return;
   },
   chose: function() {
     wx.showActionSheet({
-      itemList: ['智能上传'],
+      itemList: ['智能上传','模板上传'],
       success: function(res) {
         if (res.tapIndex == 0) {
           wx.navigateTo({
